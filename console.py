@@ -1,26 +1,21 @@
 #!/usr/bin/env python3
 import sys
+import cmd
 
-def doInput():
-    try:
-        while True:
-            user_input = input("(hbnb) ")
+class HBNBCommand(cmd.Cmd):
 
-            if user_input.lower() == 'quit':
-                break
-            elif user_input.lower() == 'help':
-                if sys.stdin.isatty():
-                    print(helper)
-                else:
-                    print("\n", helper)
-    except EOFError:
-        print("\nEOF reached. Exiting...")
-        exit
+    prompt = "(hbnb) "
 
-helper = (
-    "\nDocumented commands (type help <topic>):\n"
-    "========================================\n"
-    "EOF  help  quit\n"
-)
-
-doInput()
+    def do_quit(self, arg):
+        """
+        quits when prompted
+        """
+        return True
+    def do_EOF(self, arg):
+        """
+        EOF signal to exit the program.
+        """
+        print("")
+        return True
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()

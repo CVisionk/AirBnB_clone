@@ -1,2 +1,0 @@
->>> python3 -m unittest discover tests
->>> echo "python3 -m unittest discover tests" | bash

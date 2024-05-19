@@ -1,21 +1,39 @@
 #!/usr/bin/env python3
-import sys
+"""
+Defines the HBNB console.
+"""
 import cmd
 
-class HBNBCommand(cmd.Cmd):
 
+class HBNBCommand(cmd.Cmd):
+    """
+    A command-line interface for interacting
+    with an Airbnb application console.
+
+    Args:
+        cmd (cmd.Cmd, optional): This is the base class from the `cmd` module
+                                 that provides functionalities for building
+                                 command-line interfaces.
+                                 Inheriting from `cmd.Cmd` allows this class
+                                 to define
+                                 commands and handle user input for the
+                                 Airbnb console.
+                                 Defaults to None (automatically inherited).
+    """
     prompt = "(hbnb) "
 
-    def do_quit(self, arg):
+    def do_quit(self, args):
         """
         quits when prompted
         """
-        return True
-    def do_EOF(self, arg):
+        exit()
+
+    def do_EOF(self):
         """
         EOF signal to exit the program.
         """
-        print("")
-        return True
+        exit()
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

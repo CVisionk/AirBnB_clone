@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+""""
+File to handle storage system of applications.
+"""
 import json
 from models.base_model import BaseModel
 
@@ -21,12 +23,16 @@ class FileStorage:
 
     def save(self):
         """Serializes objects to JSON and writes them to the file."""
-        objects_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
+        objects_dict = {key: obj.to_dict()
+                        for key, obj in self.__objects.items()}
         with open(self.__file_path, "w") as f:
             json.dump(objects_dict, f)
 
     def reload(self):
-        """Attempts to deserialize objects from JSON and load them into storage."""
+        """
+        Attempts to deserialize objects from JSON and load
+        them into storage.
+        """
         try:
             with open(self.__file_path, "r") as f:
                 objects_dict = json.load(f)
@@ -36,5 +42,3 @@ class FileStorage:
                 }
         except FileNotFoundError:
             pass  # No action if file doesn't exist
-
-

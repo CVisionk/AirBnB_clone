@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Base files for all models in the application.
+"""
 import uuid
 import models
 from datetime import datetime

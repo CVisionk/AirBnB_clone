@@ -38,7 +38,11 @@ class HBNBCommand(cmd.Cmd):
         args = line.split()
         processed_args = [arg.rstrip() for arg in args]
         return ' '.join(processed_args)
-
+    
+    def emptyline(self):
+        """Do nothing upon receiving an empty line."""
+        pass
+    
     def do_quit(self, args):
         """
         quits when prompted

@@ -13,7 +13,7 @@ from models.city import City
 class TestCity(unittest.TestCase):
     """Unittests for testing instantiation of the City class."""
 
-    def test_no_args_instantiates(self):
+    def test_city(self):
         """Test: No arguments instantiates the City class."""
         self.assertEqual(City, type(City()))
 

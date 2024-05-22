@@ -13,7 +13,7 @@ from models.review import Review
 class TestReview(unittest.TestCase):
     """Unittests for testing instantiation and methods of the Review class."""
 
-    def test_no_args_instantiates(self):
+    def test_review(self):
         """Test: No arguments instantiates the Review class."""
         self.assertEqual(Review, type(Review()))
 

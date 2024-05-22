@@ -13,7 +13,7 @@ from models.base_model import BaseModel
 class TestBaseModel(unittest.TestCase):
     """Unit tests for the BaseModel class"""
 
-    def test_no_args(self):
+    def test_base_model(self):
         """Test BaseModel instantiation with no arguments."""
         self.assertEqual(BaseModel, type(BaseModel()))
 

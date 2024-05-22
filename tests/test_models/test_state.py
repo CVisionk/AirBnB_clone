@@ -13,7 +13,7 @@ from models.state import State
 class TestState(unittest.TestCase):
     """Unittests for testing instantiation and methods of the State class."""
 
-    def test_no_args_instantiates(self):
+    def test_state(self):
         """Test: No arguments instantiates the State class."""
         self.assertEqual(State, type(State()))
 

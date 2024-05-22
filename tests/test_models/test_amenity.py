@@ -13,7 +13,7 @@ from models.amenity import Amenity
 class TestAmenity(unittest.TestCase):
     """Unittests for testing instantiation and methods of the Amenity class."""
 
-    def test_no_args_instantiates(self):
+    def test_amenity(self):
         """Test: No arguments instantiates the Amenity class."""
         self.assertEqual(Amenity, type(Amenity()))
 

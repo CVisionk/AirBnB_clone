@@ -33,7 +33,6 @@ class HBNBCommand(cmd.Cmd):
         any command.
         """
         if not line.strip():
-            print("** empty input **")
             return ''
 
         args = line.split()

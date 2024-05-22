@@ -3,7 +3,7 @@
 File to handle storage system of applications.
 """
 import json
-from models.base_model import BaseModel
+#from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -27,6 +27,30 @@ class FileStorage:
                         for key, obj in self.__objects.items()}
         with open(self.__file_path, "w") as f:
             json.dump(objects_dict, f)
+    
+    def classList(self):
+        """
+        returns classlist of storable objects
+        """
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
+
+        class_list ={
+            "BaseModel" : BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review
+        }
+
+        return class_list
 
     def reload(self):
         """
@@ -34,11 +58,11 @@ class FileStorage:
         them into storage.
         """
         try:
-            with open(self.__file_path, "r") as f:
-                objects_dict = json.load(f)
-                self.__objects = {
-                    key: BaseModel(**value)
-                    for key, value in objects_dict.items()
-                }
+            with open(self.__file_path, "r", encoding="utf-8") as f:
+                obj_dict = json.load(f)
+                obj_dict = {k: self.classList()[v["__class__"]](**v)
+                            for k, v in obj_dict.items()}
+                # overwrite or insert?
+                FileStorage.__objects = obj_dict
         except FileNotFoundError:
             pass  # No action if file doesn't exist

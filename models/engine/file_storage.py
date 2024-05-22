@@ -3,7 +3,6 @@
 File to handle storage system of applications.
 """
 import json
-#from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -27,7 +26,7 @@ class FileStorage:
                         for key, obj in self.__objects.items()}
         with open(self.__file_path, "w") as f:
             json.dump(objects_dict, f)
-    
+
     def classList(self):
         """
         returns classlist of storable objects
@@ -40,8 +39,8 @@ class FileStorage:
         from models.place import Place
         from models.review import Review
 
-        class_list ={
-            "BaseModel" : BaseModel,
+        class_list = {
+            "BaseModel": BaseModel,
             "User": User,
             "State": State,
             "City": City,

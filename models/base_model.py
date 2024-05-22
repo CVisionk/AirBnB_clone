@@ -14,7 +14,7 @@ class BaseModel():
     Provides common attributes (id, created_at, updated_at) and methods
     for managing them.
     """
-    def __init__(self , *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         """
         Initializes a new BaseModel instance.
 
@@ -58,7 +58,6 @@ class BaseModel():
         """
         self.updated_at = datetime.now()
         """Saves the current object to storage."""
-        #storage.new(self)  # Register the object with storage
         storage.save()     # Persist all objects to the file
 
     def to_dict(self):

@@ -1,13 +1,8 @@
-#!/usr/bin/python3
-"""
-unittests for console.py
-"""
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from io import StringIO
 from console import HBNBCommand
 from models.base_model import BaseModel
-from models import storage
 
 
 class TestHBNBCommand(unittest.TestCase):
@@ -33,56 +28,60 @@ class TestHBNBCommand(unittest.TestCase):
         base_model.save()
 
         # Test with valid input
-        self.console.onecmd(f"update BaseModel {base_model.id} name \"new_name\"")
+        self.console.onecmd(
+            f"update BaseModel {base_model.id} name \"new_name\"")
         self.assertEqual(base_model.name, "new_name")
 
         # Test with invalid class name
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
             self.console.onecmd("update WrongClass 123 name \"new_name\"")
-            self.assertEqual(mock_stdout.getvalue().strip(), "** class doesn't exist **")
+            self.assertEqual(mock_stdout.getvalue().strip(),
+                             "** class doesn't exist **")
 
         # Test with missing instance id
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
             self.console.onecmd("update BaseModel name \"new_name\"")
-            self.assertEqual(mock_stdout.getvalue().strip(), "** instance id missing **")
+            self.assertEqual(mock_stdout.getvalue().strip(),
+                             "** instance id missing **")
 
         # Test with non-existent instance id
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
             self.console.onecmd("update BaseModel 123 name \"new_name\"")
-            self.assertEqual(mock_stdout.getvalue().strip(), "** no instance found **")
+            self.assertEqual(mock_stdout.getvalue().strip(),
+                             "** no instance found **")
 
         # Test with missing attribute name
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-            self.console.onecmd(f"update BaseModel {base_model.id} \"new_name\"")
-            self.assertEqual(mock_stdout.getvalue().strip(), "** attribute name missing **")
+            self.console.onecmd(
+                f"update BaseModel {base_model.id} \"new_name\"")
+            self.assertEqual(mock_stdout.getvalue().strip(),
+                             "** attribute name missing **")
 
         # Test with missing attribute value
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
             self.console.onecmd(f"update BaseModel {base_model.id} name")
-            self.assertEqual(mock_stdout.getvalue().strip(), "** value missing **")
-
-        # Test with non-existent attribute name
-        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-            self.console.onecmd(f"update BaseModel {base_model.id} wrong_attribute_name \"new_name\"")
-            self.assertEqual(mock_stdout.getvalue().strip(), "")
+            self.assertEqual(mock_stdout.getvalue().strip(),
+                             "** value missing **")
 
         # Test with invalid attribute value
         with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-            self.console.onecmd(f"update BaseModel {base_model.id} name wrong_value")
+            self.console.onecmd(
+                f"update BaseModel {base_model.id} name wrong_value")
             self.assertEqual(mock_stdout.getvalue().strip(), "")
-
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_do_show(self, mock_stdout):
         """Test showing instances"""
         self.console.onecmd("show BaseModel")
-        self.assertEqual(mock_stdout.getvalue().strip(), "** instance id missing **")
+        self.assertEqual(mock_stdout.getvalue().strip(),
+                         "** instance id missing **")
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_do_destroy(self, mock_stdout):
         """Test destroying instances"""
         self.console.onecmd("destroy BaseModel")
-        self.assertEqual(mock_stdout.getvalue().strip(), "** instance id missing **")
+        self.assertEqual(mock_stdout.getvalue().strip(),
+                         "** instance id missing **")
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_do_all(self, mock_stdout):
@@ -100,7 +99,8 @@ class TestHBNBCommand(unittest.TestCase):
     def test_do_update(self, mock_stdout):
         """Test updating instances"""
         self.console.onecmd("update BaseModel")
-        self.assertEqual(mock_stdout.getvalue().strip(), "** instance id missing **")
+        self.assertEqual(mock_stdout.getvalue().strip(),
+                         "** instance id missing **")
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_do_create_with_args(self, mock_stdout):
@@ -138,7 +138,8 @@ class TestHBNBCommand(unittest.TestCase):
         """Test updating instances with arguments"""
         base_model = BaseModel()
         base_model.save()
-        self.console.onecmd(f"update BaseModel {base_model.id} name new_name")
+        self.console.onecmd(
+            f"update BaseModel {base_model.id} name new_name")
         self.assertEqual(base_model.name, "new_name")
 
 

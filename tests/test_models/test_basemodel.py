@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """
 Test methods for base_model.py
@@ -23,7 +22,7 @@ class TestBaseModel(unittest.TestCase):
         base_model = BaseModel()
         base_model.save()
         self.assertIn(base_model, models.storage.all().values())
-    
+
     def test_two_models_unique_ids(self):
         """Test if two BaseModel instances have unique ids."""
         bm1 = BaseModel()
@@ -45,7 +44,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertLess(bm1.updated_at, bm2.updated_at)
 
     def test_str_representation(self):
-        """Test if BaseModel's __str__ method produces correct representation."""
+        """Test if BaseModel's __str__ method produces
+        correct representation."""
         dt = datetime.today()
         dt_repr = repr(dt)
         bm = BaseModel()
@@ -56,9 +56,12 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn("'id': '123'", bmstr)
         self.assertIn("'created_at': " + dt_repr, bmstr)
         self.assertIn("'updated_at': " + dt_repr, bmstr)
-    
+
     def test_args_unused(self):
-        """Test if BaseModel instantiation with None argument does not set attributes to None."""
+        """
+        Test if BaseModel instantiation with None argument does
+        not set attributes to None.
+        """
         bm = BaseModel(None)
         self.assertNotIn(None, bm.__dict__.values())
 
@@ -70,14 +73,17 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(bm.id, "345")
         self.assertEqual(bm.created_at, dt)
         self.assertEqual(bm.updated_at, dt)
-    
+
     def test_instantiation_with_None_kwargs(self):
         """Test BaseModel instantiation with None keyword arguments."""
         with self.assertRaises(TypeError):
             BaseModel(id=None, created_at=None, updated_at=None)
 
     def test_instantiance_with_args_and_kwargs(self):
-        """Test BaseModel instantiation with both positional and keyword arguments."""
+        """
+        Test BaseModel instantiation with both positional
+        and keyword arguments.
+        """
         dt = datetime.today()
         dt_iso = dt.isoformat()
         bm = BaseModel("12", id="123", created_at=dt_iso, updated_at=dt_iso)
@@ -142,6 +148,7 @@ class TestBaseModelSave(unittest.TestCase):
         bmid = "BaseModel." + bm.id
         with open("file.json", "r") as f:
             self.assertIn(bmid, f.read())
+
 
 class TestBaseModelToDict(unittest.TestCase):
     """Unittests for testing to_dict method of the BaseModel class."""

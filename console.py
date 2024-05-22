@@ -8,6 +8,7 @@ import models
 from models import storage
 import re
 
+
 class HBNBCommand(cmd.Cmd):
     """
     A command-line interface for interacting
@@ -118,7 +119,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        Update a class instance based on the class name and id by adding or updating an attribute.
+        Update a class instance based on the class name and id by adding
+        or updating an attribute.
         Usage: update <class name> <id> <attribute name> "<attribute value>"
         """
         if not arg:
@@ -162,7 +164,6 @@ class HBNBCommand(cmd.Cmd):
         instance = storage.all()[key]
         setattr(instance, attribute_name, attribute_value)
         instance.save()
-
 
 
 if __name__ == '__main__':

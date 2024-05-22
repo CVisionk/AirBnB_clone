@@ -214,7 +214,3 @@ class TestFileStorage_methods(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-"""
-Unittest for file_storage.py
-"""
-"""docstring"""

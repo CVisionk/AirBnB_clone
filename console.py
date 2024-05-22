@@ -26,6 +26,20 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = "(hbnb) "
 
+    def precmd(self, line):
+        """
+        Override the precmd method to split the command line into arguments
+        and strip trailing whitespace from each argument before executing
+        any command.
+        """
+        if not line.strip():
+            print("** empty input **")
+            return ''
+
+        args = line.split()
+        processed_args = [arg.rstrip() for arg in args]
+        return ' '.join(processed_args)
+
     def do_quit(self, args):
         """
         quits when prompted

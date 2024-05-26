@@ -1,0 +1,11 @@
+footer
+    {
+        display: grid;
+        font-size: 1.5rem;
+        place-items: center;
+        width: 100%;
+        height: 60px;
+        background: #00FF00;
+        position: fixed;
+        bottom: 0;
+    }

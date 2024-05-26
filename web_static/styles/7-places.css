@@ -1,0 +1,33 @@
+.places
+{
+    margin-top: 20px;
+    width: 100%;
+    min-height: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.places h1
+{
+    display: block;
+    font-size: 30px;
+    min-width: 100%;
+}
+
+.places article
+{
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 4px;
+    border: 1px solid #FF5A5F;
+    text-align: center;
+    box-shadow: 2.5px 2.5px 2.5px #FF5A5F;
+    
+}
+
+.places article:hover
+{
+    filter:brightness(50%) ;
+}

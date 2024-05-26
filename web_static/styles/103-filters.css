@@ -1,0 +1,166 @@
+.filters
+{
+    width: 80vw;
+    height: 5vw;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    box-shadow: 2.5px 2.5px 2.5px gray;
+    z-index: 1;
+    margin: 5vw auto;
+
+}
+
+.filters button
+{
+    font-size: 2vw;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 4vw;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+    right: 3vw;
+}
+
+.filters button:hover
+{
+    opacity: 90%;
+}
+
+.filters div
+{
+    height: 100%;
+    width: 25%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.filters div:nth-child(1)
+{
+    border-right: 1px solid  #DDDDDD;
+}
+
+.filters div h3
+{
+    font-weight: 600;
+    margin: 0;
+    font-size: 1vw;
+}
+
+.filters div h4
+{
+    font-weight: 400;
+    font-size: 1vw;
+    margin: 0;
+}
+
+.locations
+{
+    left: 0;
+    padding: 0;
+    display: none;
+    text-align: left;
+}
+.locations .popover
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+    margin: 0;
+    top: 100%; 
+    background: #FAFAFA;
+    list-style: none;
+    padding: 2px;
+    padding-bottom: 0;
+    z-index: -1;
+    opacity: 0;
+    display: none;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.6s ease;
+    pointer-events: none;
+    border: 1px solid #CCCCCC;
+}
+
+.locations:hover .popover
+{
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+
+.locations .popover h2
+{
+    font-size: 1.2vw;
+    width: 100%;
+    margin: 0;
+
+}
+
+.locations .popover h3
+{
+    font-size: 1vw;
+    width: 100%;
+    margin: 0;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.locations .popover h3:last-child
+{
+    padding-bottom: 20px;
+}
+
+.amenities
+{
+    left: 25%;
+
+}
+
+.amenities .popover
+{
+    background: #FAFAFA;
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    top: 100%;
+    margin: 0px;
+    list-style: none;
+    padding: 20px;
+    z-index: -1;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.6s ease;
+    display: none;
+    pointer-events: none;
+    border: 1px solid #CCCCCC;
+}
+
+.amenities:hover .popover
+{
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+
+.amenities .popover li
+{
+    text-align: left;
+    width: 100%;
+    font-size: 1vw;
+}
+
